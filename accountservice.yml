@@ -14,7 +14,7 @@ spring:
     serialization:
       fail-on-empty-beans: false
 server:
-  port: 0
+  port: 9000
   error:
     include-message: always 
 eureka:
@@ -30,4 +30,6 @@ management:
     web:
       exposure:
         include: refresh,health
+api:
+  customer: http://localhost:9010/api/customer
 
