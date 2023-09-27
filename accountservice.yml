@@ -1,35 +1,43 @@
 spring:
   datasource:
-      username: newroot
-      password: root
-      url: jdbc:mysql://localhost:3306/account
+    hikari:
+      auto-commit: true
+      connection-timeout: 6000
+      maximum-pool-size: 5
+    password: root
+    url: jdbc:mysql://localhost:3306/account?createDatabaseIfNotExist=true
+    username: newroot
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.MySQLDialect       
     show-sql: true
   jackson:
     serialization:
       fail-on-empty-beans: false
 server:
-  port: 9000
+  port: 0
   error:
-    include-message: always 
+    include-message: always
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} 
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/ 
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
 customProperty:
-  test: Hi arvi
+   test: Arvinder
 management:
   endpoints:
     web:
       exposure:
         include: refresh,health
 api:
-  customer: http://localhost:9010/api/customer
-
+  customer: http://CUSTOMERSERVICE/customer  
+    
+  
+        
+        
+        
