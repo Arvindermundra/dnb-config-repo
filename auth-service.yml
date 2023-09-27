@@ -11,11 +11,6 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-  application:
-    name: AUTH-SERVICE
-  config:
-    import: configserver:http://${CONFIG_SERVER_URL:localhost}:8888
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
