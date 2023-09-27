@@ -17,13 +17,17 @@ spring:
   cloud:
     gateway:
       routes:
+       - id: ACCOUNTSERVICE
+        uri: lb://ACCOUNTSERVICE
+        predicates:
+          - Path=/account/**
       - id: CUSTOMERSERVICE
         uri: lb://CUSTOMERSERVICE
         predicates:
           - Path=/customer/**
-      - id: ACCOUNTSERVICE
-        uri: lb://ACCOUNTSERVICE
+      - id: AUTH-SERVICE
+        uri: lb://AUTH-SERVICE
         predicates:
-          - Path=/account/**           
+          - Path=/authenticate/**           
         
         
